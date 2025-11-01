@@ -37,12 +37,12 @@ origins = [
     "https://admin-folkestone.e-hotelmanager.com",
     "http://127.0.0.1:5500",
     "http://localhost:3000",
-    "http://localhost:8000",
-    "http://localhost:8080",
+    "http://localhost:8001",
+    "http://localhost:8081",
     "https://localhost:3000",
     # Ajout des patterns de sous-domaines
-    "https://*.e-hotelmanager.com",
-    "http://*.e-hotelmanager.com"
+    "https://*.hotelmanager.fr",
+    "http://*.hotelmanager.fr"
 ]
 
 app.add_middleware(
