@@ -6,7 +6,7 @@ services:
     build: .
     restart: always
     ports:
-      - "8000:8000"
+      - "8001:8001"
     volumes:
       # Utilise un volume nommé géré par Docker pour la persistance
       - hotel_data_volume:/app/data
