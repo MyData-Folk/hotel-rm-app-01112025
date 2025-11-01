@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  # Service pour l'API Backend (Python/FastAPI)
+  api:
+    build: .
+    restart: always
+    ports:
+      - "8000:8000"
+    volumes:
+      # Utilise un volume nommé géré par Docker pour la persistance
+      - hotel_data_volume:/app/data
+    environment:
+      # L'URL de la base de données sera injectée par Coolify
+      - DATABASE_URL=${DATABASE_URL}
+
+  # Service pour le site Frontend (statique)
+  frontend:
+    image: nginx:alpine
+    restart: always
+    ports:
+      - "8081:80"
+    volumes:
+      # Monte le dossier frontend dans le serveur Nginx
+      - ./frontend:/usr/share/nginx/html
+
+  # Service pour le site Admin (statique)
+  admin:
+    image: nginx:alpine
+    restart: always
+    ports:
+      - "8082:80"
+    volumes:
+      # Monte le dossier admin dans le serveur Nginx
+      - ./admin:/usr/share/nginx/html
+
+# Déclare le volume nommé utilisé par le service API
+volumes:
+  hotel_data_volume:
